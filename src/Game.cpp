@@ -282,10 +282,10 @@ void Game::sCollision()
 
 			// Update color based on remaining lifespan
 			if (brick->cLifespan->remaining == 2) {
-				std::get<sf::RectangleShape>(brick->cShape->shape).setFillColor(sf::Color(255, 105, 180)); // Pink
+				std::get<sf::RectangleShape>(brick->cShape->shape).setFillColor(sf::Color(255, 255, 255)); // Pink
 			}
 			else if (brick->cLifespan->remaining == 1) {
-				std::get<sf::RectangleShape>(brick->cShape->shape).setFillColor(sf::Color(255, 255, 0)); // Yellow
+				std::get<sf::RectangleShape>(brick->cShape->shape).setFillColor(sf::Color(252, 255, 48)); // Yellow
 			}
 			else if (brick->cLifespan->remaining <= 0) {
 				brick->destroy(); // Destroy brick when lifespan is zero
