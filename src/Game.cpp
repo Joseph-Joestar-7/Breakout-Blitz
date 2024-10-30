@@ -153,6 +153,7 @@ void Game::spawnBricks()
 			entity->cScore= std::make_shared<CScore>( UNIT_SCORE);
 			// Enable collisions
 			entity->cCollision = std::make_shared<CCollision>(brC.CR);
+			entity->cLifespan= std::make_shared<CLifespan>(3);
 		}
 	}
 }
@@ -276,7 +277,20 @@ void Game::sCollision()
 			ballPos.x <= brickPos.x + brickSize.x / 2)
 		{
 			reflectVertically();
-			brick->destroy();
+
+			brick->cLifespan->remaining -= 1; // Decrease lifespan
+
+			// Update color based on remaining lifespan
+			if (brick->cLifespan->remaining == 2) {
+				std::get<sf::RectangleShape>(brick->cShape->shape).setFillColor(sf::Color(255, 105, 180)); // Pink
+			}
+			else if (brick->cLifespan->remaining == 1) {
+				std::get<sf::RectangleShape>(brick->cShape->shape).setFillColor(sf::Color(255, 255, 0)); // Yellow
+			}
+			else if (brick->cLifespan->remaining <= 0) {
+				brick->destroy(); // Destroy brick when lifespan is zero
+			}
+
 			m_score += brick->cScore->score;
 			// Adjust position outside the brick
 			ballPos.y = (ballPos.y < brickPos.y) ?
