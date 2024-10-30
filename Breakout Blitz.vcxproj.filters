@@ -24,6 +24,9 @@
     <ClCompile Include="src\EntityManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="config\config.txt" />
@@ -32,13 +35,16 @@
     <Font Include="fonts\KillerTech.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Components.h">
+    <ClInclude Include="src\Components.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Entity.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\EntityManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
