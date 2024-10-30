@@ -47,10 +47,10 @@ cd Breakout-Blitz
    - Add the SFML include directory (likely `include/SFML`) in **Project Properties > C/C++ > General > Additional Include Directories**.
    - Link the SFML libraries from the `lib` directory in **Project Properties > Linker > General > Additional Library Directories**.
 3. **Build the Solution**:
-   - Set the build configuration to **Debug** or **Release** as needed.
+   - Set the build configuration to **Debug**.
    - Go to **Build > Build Solution** to compile the game.
 4. **Run the Game**:
-   - After a successful build, navigate to the output directory (e.g., `x64/Debug`) and run the generated `BreakoutBlitz.exe` file.
+   - After a successful build, navigate to the output directory (`x64/Debug`) and run the generated `BreakoutBlitz.exe` file.
 
 ### 3. Building on macOS
 1. **Install SFML**:
