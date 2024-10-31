@@ -67,6 +67,4 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(242,90): warning C4244:         ]
   (compiling source file 'src/Game.cpp')
   
-  Main.cpp
-  Generating Code...
   Breakout Blitz.vcxproj -> C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\x64\Debug\Breakout Blitz.exe

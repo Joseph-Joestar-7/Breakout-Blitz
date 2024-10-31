@@ -288,9 +288,9 @@ void Game::sCollision()
 			}
 			else if (brick->cLifespan->remaining <= 0) {
 				brick->destroy(); // Destroy brick when lifespan is zero
+				m_score += brick->cScore->score;
 			}
 
-			m_score += brick->cScore->score;
 			// Adjust position outside the brick
 			ballPos.y = (ballPos.y < brickPos.y) ?
 				(brickPos.y - brickSize.y / 2 - ballRadius) :
