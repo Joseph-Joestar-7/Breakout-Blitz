@@ -15,7 +15,6 @@ void Game::init()
 		exit(-1);
 	}
 	m_text = sf::Text("Score: 0", m_font, 18);
-
 	// Create references to the configurations
 	PaddleConfig& p = m_paddleConfig;
 	BallConfig& b = m_ballConfig;
@@ -282,7 +281,7 @@ void Game::sCollision()
 
 			// Update color based on remaining lifespan
 			if (brick->cLifespan->remaining == 2) {
-				std::get<sf::RectangleShape>(brick->cShape->shape).setFillColor(sf::Color(255, 255, 255)); // Pink
+				std::get<sf::RectangleShape>(brick->cShape->shape).setFillColor(sf::Color(255, 105, 180)); // Pink
 			}
 			else if (brick->cLifespan->remaining == 1) {
 				std::get<sf::RectangleShape>(brick->cShape->shape).setFillColor(sf::Color(252, 255, 48)); // Yellow
@@ -347,10 +346,20 @@ void Game::sRender()
 		}
 	}
 
-	// Render score
+	// Render score on the left
 	std::string scoreStr = "Score: " + std::to_string(m_score);
 	m_text.setString(scoreStr);
+	m_text.setPosition(10.f, 10.f); // Set position near the top-left corner
 	m_window.draw(m_text);
+
+	// Render lives on the right
+	std::string livesStr = "Lives: " + std::to_string(m_lives);
+	m_text.setString(livesStr);
+	float windowWidth = m_window.getSize().x;
+	float textWidth = m_text.getLocalBounds().width;
+	m_text.setPosition(windowWidth - textWidth - 10.f, 10.f); // Set position near the top-right corner
+	m_window.draw(m_text);
+
 
 	// When paused, show instructions and game controls in middle of the screen
 	if (m_paused) {

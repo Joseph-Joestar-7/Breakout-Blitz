@@ -29,6 +29,7 @@ class Game {
 	BallConfig m_ballConfig;
 	BrickConfig m_brickConfig;
 	uint32_t m_score = 0;
+	uint32_t m_lives = 3;
 	uint64_t m_currentFrame = 0;
 	bool m_paused = false;
 	bool m_running = true;
