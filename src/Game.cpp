@@ -1,5 +1,8 @@
 #include "Game.hpp"
 #include <iostream>
+#include <chrono>
+#include <thread>
+
 Game::Game()
 {
 	this->init();
@@ -45,7 +48,7 @@ void Game::init()
 	b.OB = 255;      // Outline Blue color component
 	b.OT = 3;        // Outline Thickness
 	b.V = 30;        // Shape Vertices
-	b.S = 4.0f;      // Speed
+	b.S = 8.0f;      // Speed
 
 	// Hardcode the brick configuration values
 	br.SR = 40;      // Shape Radius
@@ -60,6 +63,22 @@ void Game::init()
 	br.V = 4;        // Shape Vertices (rectangle shape)
 	br.S = 0.0f;     // Speed (static bricks)
 
+	this->spawnpaddle();
+	this->spawnball();
+	this->spawnBricks();
+}
+
+void Game::reset()
+{
+	m_lives = 3;
+	m_score = 0;
+	m_lost = false;
+	
+	for (auto e : m_entityManager.getEntities())
+	{
+		e->destroy();
+	}
+	m_entityManager.update();
 	this->spawnpaddle();
 	this->spawnball();
 	this->spawnBricks();
@@ -200,6 +219,12 @@ void Game::sUserInput()
 			case sf::Keyboard::Escape:
 				m_paused = !m_paused;
 				break;
+			case sf::Keyboard::R:
+				if (m_lost)
+				{
+					m_window.clear();
+					reset();
+				}
 			default:
 				break;
 			}
@@ -258,7 +283,11 @@ void Game::sCollision()
 	if (ballPos.y + ballRadius > winSize.y)
 	{
 		m_lives--;
+		if (m_lives == 0)
+			m_lost = true;
 		m_ball->destroy();
+		m_window.display();
+		std::this_thread::sleep_for(std::chrono::seconds(1));
 		spawnball();
 	}
 
@@ -283,7 +312,7 @@ void Game::sCollision()
 			ballPos.x <= brickPos.x + brickSize.x / 2)
 		{
 			reflectVertically();
-
+			
 			brick->cLifespan->remaining -= 1; // Decrease lifespan
 
 			// Update color based on remaining lifespan
@@ -347,7 +376,7 @@ void Game::sRender()
 	// When paused, show instructions and game controls in middle of the screen
 	if (m_paused) {
 		std::string controlsStr =
-			"Press A to move Left\nPress D to move Right\nPress ESC to Play/Pause\nPress Q to Exit\nClick LEFT MOUSE BUTTON to shoot bullet\nClick RIGHT MOUSE BUTTON to use special weapon";
+			"Press A to move Left\nPress D to move Right\nPress ESC to Play/Pause\nPress Q to Exit\n";
 		auto controlsText = sf::Text(controlsStr, m_font,
 			m_text.getCharacterSize());
 
@@ -360,6 +389,24 @@ void Game::sRender()
 		controlsText.setPosition(winWidth / 2.0f, winHeight / 2.0f);
 
 		m_window.draw(controlsText);
+	}
+
+	if (m_lost)
+	{
+		std::string str =
+			"You lose lol\n";
+		auto text = sf::Text(str, m_font, m_text.getCharacterSize());
+
+		sf::FloatRect textRect = text.getLocalBounds();
+		text.setOrigin(textRect.left + textRect.width / 2.0f,
+			textRect.top + textRect.height / 2.0f);
+		const auto& winWidth = m_window.getSize().x;
+		const auto& winHeight = m_window.getSize().y;
+		text.setPosition(winWidth / 2.0f, winHeight / 2.0f);
+
+		m_window.draw(text);
+		m_window.display();
+		return;
 	}
 
 	m_window.display();
@@ -375,12 +422,11 @@ void Game::run()
 		}
 
 		// If not paused, run these systems
-		if (!m_paused) {
+		if (!m_paused && !m_lost) {
 			m_entityManager.update();
 
 			this->sMovement();
 			this->sCollision();
-			//this->sLifespan();
 		}
 
 		this->sUserInput();

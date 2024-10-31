@@ -33,15 +33,14 @@ class Game {
 	uint64_t m_currentFrame = 0;
 	bool m_paused = false;
 	bool m_running = true;
-
+	bool m_lost = false;
 	std::shared_ptr<Entity> m_paddle;
 	std::shared_ptr<Entity> m_ball;
 	// initialize game state with config file
 	void init();
-
+	void reset();
 	void sMovement();      // System: Entity position/movement update
 	void sUserInput();     // System: User input
-	void sLifespan();      // System: Lifespan
 	void sRender();	       // System: Render
 	void sCollision();     // System:  Collision
 
