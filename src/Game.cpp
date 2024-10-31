@@ -310,36 +310,12 @@ void Game::sRender()
 			auto& circle = std::get<sf::CircleShape>(e->cShape->shape);
 			circle.setPosition(e->cTransform->position.x, e->cTransform->position.y);
 
-			// Handle lifespan opacity for CircleShape
-			if (e->cLifespan) {
-				int opacity = 255 * e->cLifespan->remaining / e->cLifespan->total;
-
-				// Set fill and outline color with opacity
-				const sf::Color& currFill = circle.getFillColor();
-				circle.setFillColor(sf::Color(currFill.r, currFill.g, currFill.b, opacity));
-
-				const sf::Color& currOutline = circle.getOutlineColor();
-				circle.setOutlineColor(sf::Color(currOutline.r, currOutline.g, currOutline.b, opacity));
-			}
-
 			// Draw the circle
 			m_window.draw(circle);
 		}
 		else if (std::holds_alternative<sf::RectangleShape>(e->cShape->shape)) {
 			auto& rectangle = std::get<sf::RectangleShape>(e->cShape->shape);
 			rectangle.setPosition(e->cTransform->position.x, e->cTransform->position.y);
-
-			// Handle lifespan opacity for RectangleShape
-			if (e->cLifespan) {
-				int opacity = 255 * e->cLifespan->remaining / e->cLifespan->total;
-
-				// Set fill and outline color with opacity
-				const sf::Color& currFill = rectangle.getFillColor();
-				rectangle.setFillColor(sf::Color(currFill.r, currFill.g, currFill.b, opacity));
-
-				const sf::Color& currOutline = rectangle.getOutlineColor();
-				rectangle.setOutlineColor(sf::Color(currOutline.r, currOutline.g, currOutline.b, opacity));
-			}
 
 			// Draw the rectangle
 			m_window.draw(rectangle);
