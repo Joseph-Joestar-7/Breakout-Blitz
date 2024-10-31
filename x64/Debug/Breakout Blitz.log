@@ -1,10 +1,10 @@
 ﻿  Game.cpp
 C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\src\Game.cpp(133,20): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\src\Game.cpp(334,20): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
-C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\src\Game.cpp(334,20): warning C4244:         with
-C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\src\Game.cpp(334,20): warning C4244:         [
-C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\src\Game.cpp(334,20): warning C4244:             T=unsigned int
-C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\src\Game.cpp(334,20): warning C4244:         ]
+C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\src\Game.cpp(341,20): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\src\Game.cpp(341,20): warning C4244:         with
+C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\src\Game.cpp(341,20): warning C4244:         [
+C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\src\Game.cpp(341,20): warning C4244:             T=unsigned int
+C:\Users\HP\Desktop\CS Playground\SFML\Breakout Blitz\src\Game.cpp(341,20): warning C4244:         ]
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(241,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'src/Game.cpp')
   C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xutility(241,76):

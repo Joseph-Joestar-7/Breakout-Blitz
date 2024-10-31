@@ -255,6 +255,13 @@ void Game::sCollision()
 		reflectHorizontally();
 	}
 
+	if (ballPos.y + ballRadius > winSize.y)
+	{
+		m_lives--;
+		m_ball->destroy();
+		spawnball();
+	}
+
 	// Paddle collision
 	if (ballPos.y + ballRadius >= paddlePos.y - paddleSize.y / 2 &&
 		ballPos.x >= paddlePos.x - paddleSize.x / 2 &&
