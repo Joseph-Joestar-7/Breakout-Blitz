@@ -421,7 +421,7 @@ void Game::run()
 			return;
 		}
 
-		// If not paused, run these systems
+		// If not paused and lost, run these systems
 		if (!m_paused && !m_lost) {
 			m_entityManager.update();
 
