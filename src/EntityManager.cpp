@@ -1,6 +1,5 @@
 #include "EntityManager.hpp"
 #include <algorithm>
-#include <iostream>
 
 EntityManager::EntityManager() {}
 
@@ -31,7 +30,6 @@ std::shared_ptr<Entity> EntityManager::addEntity(const std::string& tag)
 {
 	auto entity = std::shared_ptr<Entity>(new Entity(m_totalEntities++, tag));
 	m_entitiesToAdd.push_back(entity);
-	std::cout << "Added" << tag << std::endl;
 	return entity;
 }
 

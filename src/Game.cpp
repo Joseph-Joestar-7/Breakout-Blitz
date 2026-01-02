@@ -48,7 +48,7 @@ void Game::init()
 	b.OB = 255;      // Outline Blue color component
 	b.OT = 3;        // Outline Thickness
 	b.V = 30;        // Shape Vertices
-	b.S = 8.0f;      // Speed
+	b.S = 4.0f;      // Speed
 
 	// Hardcode the brick configuration values
 	br.SR = 40;      // Shape Radius
